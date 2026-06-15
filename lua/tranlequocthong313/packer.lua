@@ -60,4 +60,34 @@ return require('packer').startup(function(use)
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets"
     }
+
+    -- Debugger
+    use {
+        'mfussenegger/nvim-dap',
+        commit = '7ff6936010b7222fea2caea0f67ed77f1b7c60dd',
+    }
+    use {
+        'rcarriga/nvim-dap-ui',
+        requires = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    }
+    use {
+        'theHamsta/nvim-dap-virtual-text',
+        requires = { 'mfussenegger/nvim-dap' },
+    }
+    use {
+        'mxsdev/nvim-dap-vscode-js',
+        requires = {
+            'mfussenegger/nvim-dap',
+            {
+                'microsoft/vscode-js-debug',
+                opt = true,
+                run = 'npm i && npm run compile vsDebugServerBundle && mv dist out',
+            },
+        },
+    }
+
+    use({
+        "nickjvandyke/opencode.nvim",
+        tag = "*",
+    })
 end)
